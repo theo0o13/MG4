@@ -54,6 +54,9 @@ public class Player : MonoBehaviour
         _equationObject.SetActive(true);
         _movement.enabled = false;
 
+        FloatAnimation floatAnimation = _currentFood.GetComponent<FloatAnimation>();
+        floatAnimation.StopAnimation();
+
         // STEP 6 -------------------------------------------------------------
         // Inside this method, we've detected a collision with fish food.
         // We want to make the food stop playing its floating animation when we
@@ -81,15 +84,15 @@ public class Player : MonoBehaviour
             {
                 case EquationType.Add:
                     // UNCOMMENT AFTER STEP 3
-                    //correct = CheckIfAdditionCorrect(number);
+                    correct = CheckIfAdditionCorrect(number);
                     break;
                 case EquationType.Subtract:
                     // UNCOMMENT AFTER STEP 4
-                    //correct = CheckIfSubtractionCorrect(number);
+                    correct = CheckIfSubtractionCorrect(number);
                     break;
                 case EquationType.Multiply:
                     // UNCOMMENT AFTER STEP 5
-                    //correct = CheckIfMultiplicationCorrect(number);
+                    correct = CheckIfMultiplicationCorrect(number);
                     break;
             }
         }
@@ -122,7 +125,7 @@ public class Player : MonoBehaviour
     //
     // INPUT: an integer number 
     // OUTPUT: a true or false value
-    //
+
     // The _number1 and _number2 member variables contain the two numbers in the
     //      question. For example, if the question displayed to the screen was
     //      5 + 2 = __, then _number1 will be 5 and _number2 will be 2. This is
@@ -138,7 +141,17 @@ public class Player : MonoBehaviour
     // Feature 4 of the rubric should work after you finish all of the 3 methods
     //      in this file.
 
-    // private ??? CheckIfAdditionCorrect (??? ???)
+    private bool CheckIfAdditionCorrect (int correct)
+    {
+        if (_number1 + _number2 == correct)
+        {
+            return true;
+    
+        }else
+        {
+            return false;
+        }
+    }
 
     // STEP 3 -----------------------------------------------------------------
 
@@ -154,7 +167,14 @@ public class Player : MonoBehaviour
     // After you write this method, uncomment the line above that says
     //      "UNCOMMENT AFTER STEP 4".
 
-    // private ??? CheckIfSubtractionCorrect (??? ???)
+     private bool CheckIfSubtractionCorrect (int correct){
+        if (_number1 - _number2 == correct){
+            return true;
+        }else
+        {
+            return false;
+        }
+     }
 
     // STEP 4 -----------------------------------------------------------------
 
@@ -170,7 +190,14 @@ public class Player : MonoBehaviour
     // After you write this method, uncomment the line above that says
     //      "UNCOMMENT AFTER STEP 5".
 
-    // private ??? CheckIfMultiplicationCorrect (??? ???)
+    private bool CheckIfMultiplicationCorrect (int correct)
+    {
+        if (_number1 * _number2 == correct){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
     // STEP 5 -----------------------------------------------------------------
 
